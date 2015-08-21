@@ -60,11 +60,17 @@ void setup() {
   TIMSK0 |= (1<<OCIE0B);  //割り込み処理設定　ISR(TIMER0_COMPB_vect)へ飛ぶ？
   TIMSK0 |= (1<<OCIE0A);  //割り込み処理設定　ISR(TIMER0_COMPA_vect)へ飛ぶ？
   
+  atomicPWM_PIN6_highState = (1500 >> 2) -250;
+  atomicPWM_PIN5_highState = (1200 >> 2) -250;
+  atomicPWM_PIN6_lowState  = 255-atomicPWM_PIN6_highState;
+  atomicPWM_PIN5_lowState  = 255-atomicPWM_PIN5_highState; 
+
+  delay(5000);
+
+
+  
 }
 
 void loop() {
-  atomicPWM_PIN6_highState = 1150 >>3;
-  atomicPWM_PIN5_highState = 1150>>3;
-  atomicPWM_PIN6_lowState  = 255-atomicPWM_PIN6_highState;
-  atomicPWM_PIN5_lowState  = 255-atomicPWM_PIN5_highState; 
+
 }
